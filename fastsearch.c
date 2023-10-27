@@ -13,8 +13,7 @@ static inline void do_prime(void) {
 	for (size_t i = 11; j < size; i+=2) {
 		if ((i % 3 == 0) ||
 		(i % 5 == 0) ||
-		(i % 7 == 0) ||
-		(i % 9 == 0)) {
+		(i % 7 == 0) ) {
 		} else {
 			prime_nums[j] = i;
 			j++;
@@ -27,7 +26,6 @@ static __attribute__((always_inline)) __attribute__((pure)) bool num_divisible(s
 //	bool result = (num % 4 == 0) && (num % 5 == 0) &&
 //		(num % 6 == 0);
 
-	//bool result = (num % 20 == 0) || (num % 6 == 0);
 	bool result = (num % 20 == 0) | (num % 6 == 0);
 
 	for (size_t i = 0; i < size; i++) {

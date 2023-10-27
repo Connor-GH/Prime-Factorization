@@ -1,10 +1,10 @@
-CC ?= gcc
-DCC ?= ldc2
+CC := gcc
+DCC := ldc2
 DFLAGS = -O3 -flto=full -boundscheck=off -release
 WNOFLAGS = -Wno-unused-macros -Wno-reserved-identifier
 CFLAGS = -march=native -O3 $(WNOFLAGS) \
 		 -Wall -Wextra -Wpedantic  \
-		 -D_FORTIFY_SOURCE=0
+		 -D_FORTIFY_SOURCE=0 -std=c17
 ifeq ($(CC), clang)
 	CFLAGS += -Weverything -D__CLANG_COMPILER__
 else
@@ -19,4 +19,6 @@ $(TARGET): remove
 	$(DCC) $(DFLAGS) -of=bin/$@-d $@.d
 
 remove:
-	@rm -rf $(TARGET)
+	@rm -rf bin/$(TARGET)
+	@rm -rf bin/$(TARGET)-O
+	@rm -rf bin/$(TARGET)-d
